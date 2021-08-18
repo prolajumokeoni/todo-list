@@ -1,3 +1,4 @@
-body {
-  background-color: bisque;
+.checked {
+  text-decoration: line-through;
+  color: gray;
 }
