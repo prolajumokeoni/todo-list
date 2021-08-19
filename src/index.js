@@ -3,6 +3,32 @@ import './style.css';
 
 const inputField = document.querySelector('#inputField');
 const todoList = document.querySelector('#todoList');
+
+const todos = [
+  {
+    description: 'wash my hair',
+    index: 1,
+    completed: 0,
+  },
+  {
+    description: 'sleep',
+    index: 2,
+    completed: 0,
+  },
+];
+inputField.addEventListener('keypress', (e) => {
+  if (e.key === 'Enter') {
+    todos.push({
+      description: inputField.value,
+      completed: 0,
+      index: todos.length + 1,
+    });
+    localStorage.setItem('todos', JSON.stringify(todos));
+    todoList.innerHTML = '';
+    inputField.value = '';
+  }
+});
+
 function displayToDoList() {
   const data = localStorage.getItem('todos');
   if (data) {
@@ -17,31 +43,5 @@ function displayToDoList() {
       todoList.appendChild(li);
     });
   }
-
-  const todos = [
-    {
-      description: 'wash my hair',
-      index: 1,
-      completed: 0,
-    },
-    {
-      description: 'sleep',
-      index: 2,
-      completed: 0,
-    },
-  ];
-  inputField.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') {
-      todos.push({
-        description: inputField.value,
-        completed: 0,
-        index: todos.length + 1,
-      });
-      localStorage.setItem('todos', JSON.stringify(todos));
-      todoList.innerHTML = '';
-      displayToDoList();
-      inputField.value = '';
-    }
-  });
 }
 displayToDoList();
