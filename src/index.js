@@ -33,21 +33,19 @@ function displayToDoList() {
     li.innerHTML = text;
     todoList.appendChild(li);
   });
-  const checkboxesButtons = document.querySelectorAll('#defaultCheck1')
-  checkboxesButtons.forEach(btn => {
+  const checkboxesButtons = document.querySelectorAll('#defaultCheck1');
+  checkboxesButtons.forEach((btn) => {
     btn.addEventListener('change', (e) => {
-      const todoObject = todos.find((x) => x.index == e.target.parentNode.id);
-      let index = todos.indexOf(todoObject)
+      const todoObject = todos.find((x) => x.index === e.target.parentNode.id);
+      const index = todos.indexOf(todoObject);
       if (!todos[index].completed) {
-        todos[index].completed = 1
-        console.log(e.target.parentNode.children[1])
-        e.target.parentNode.children[1].classList.add('checked')
-      } 
-      else {
-        todos[index].completed = 0
-        e.target.parentNode.children[1].classList.remove('checked')
+        todos[index].completed = 1;
+        e.target.parentNode.children[1].classList.add('checked');
+      } else {
+        todos[index].completed = 0;
+        e.target.parentNode.children[1].classList.remove('checked');
       }
-    })
-  })
+    });
+  });
 }
 displayToDoList();
