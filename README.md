@@ -7,6 +7,8 @@ The todo list application is an app built with javascript where users can remove
 - Css3
 - Javascript
 
+## Live Demo
+[live demo](https://prolajumokeoni.github.io/todo-list/)
 ## Getting Started
 
 To get a local copy up and running follow these simple example steps:
