@@ -1,5 +1,7 @@
 # todo-list
 The todo list application is an app built with javascript where users can remove and add tasks
+## Screenshot
+![localhost_8080_](https://user-images.githubusercontent.com/69638013/130123157-427b00da-b2a8-47dc-a6af-07fbc4e24d09.png)
 
 ## Built With
 
