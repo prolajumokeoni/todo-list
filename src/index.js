@@ -4,7 +4,18 @@ import './style.css';
 let inputField = document.querySelector('#inputField')
 let todoList = document.querySelector('#todoList')
 
-const todos= []
+const todos= [
+	{
+		description: 'wash my hair',
+		index: 1,
+		completed: 0
+	},
+	{
+		description: 'sleep',
+		index: 2,
+		completed: 0
+	}
+]
 inputField.addEventListener('keypress', (e) => {
   if (e.key === 'Enter') {
   console.log(inputField.value)
