@@ -16,8 +16,8 @@ To get a local copy up and running follow these simple example steps:
 - [Copy this link](https://github.com/prolajumokeoni/todo-list)
 - Open your terminal or command line
 - Run `git clone` and Paste the link
-- Open the folder with your code editor
-- Run npm start and it will automatically load in your browser
+- After the clone, type in the command `cd to-do-list` to access the directory on the terminal
+- Run `npm start` and it will automatically load in your browser
 
 
 👤 **Oni Olajumuke Priscilla**
