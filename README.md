@@ -17,7 +17,8 @@ To get a local copy up and running follow these simple example steps:
 - Open your terminal or command line
 - Run `git clone` and Paste the link
 - After the clone, type in the command `cd to-do-list` to access the directory on the terminal
-- Run `npm start` and it will automatically load in your browser
+- Run `npm i` to install
+- - Run `npm start` and it will automatically load in your browser
 
 
 👤 **Oni Olajumuke Priscilla**
