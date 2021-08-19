@@ -1,36 +1,42 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './style.css';
+import completeTask from './checkbox';
+import addTask from './addtodo';
 
 const todoList = document.querySelector('#todoList');
-
-const todos = [
-  {
-    description: 'Go to the cinema',
-    index: 1,
-    completed: 0,
-  },
-  {
-    description: 'wash my hair',
-    index: 2,
-    completed: 0,
-  },
-  {
-    description: 'sleep',
-    index: 3,
-    completed: 0,
-  },
-];
+const inputField = document.querySelector('#inputField');
+const todos = [];
 
 function displayToDoList() {
-  todos.forEach((todo) => {
-    const li = document.createElement('li');
-    li.classList.add('list-group-item');
-    const text = `<div class="content" id="${todo.index}"><div class="d-flex"><input class="form-check-input" type="checkbox" value="" ${todo.completed ? 'checked' : ''} id="defaultCheck1">
-        <div class="description ${todo.completed ? 'checked' : ''}" contenteditable="${!todo.completed}">${todo.description}</div></div>
-        <div  class="delete"><i class="fas fa-trash mt-2"></i></div>
+  const data = localStorage.getItem('todos');
+  if (data) {
+    JSON.parse(data).forEach((todo) => {
+      const li = document.createElement('li');
+      li.classList.add('list-group-item');
+      const text = `<div class="d-flex" id="${todo.index}">
+    <input class="form-check-input" type="checkbox" value="" ${todo.completed ? 'checked' : ''} id="defaultCheck1"/>
+          <div class="description flex-grow-1 ${todo.completed ? 'checked' : ''}" contenteditable="${!todo.completed}">${todo.description}</div>
+          <i class="fas fa-trash delete mt-2 float-right"></i>
        </div>`;
-    li.innerHTML = text;
-    todoList.appendChild(li);
+      li.innerHTML = text;
+      todoList.appendChild(li);
+    });
+  }
+
+  const checkboxesButtons = document.querySelectorAll('#defaultCheck1');
+  checkboxesButtons.forEach((btn) => {
+    btn.addEventListener('change', (e) => {
+      completeTask(e);
+    });
   });
 }
 displayToDoList();
+
+inputField.addEventListener('keypress', (e) => {
+  if (e.key === 'Enter' && inputField.value) {
+    addTask(todos, inputField.value);
+    todoList.innerHTML = '';
+    displayToDoList();
+    inputField.value = '';
+  }
+});
