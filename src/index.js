@@ -2,6 +2,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './style.css';
 import completeTask from './checkbox';
 import addTask from './addtodo';
+import editTodo from './edit';
 
 const todoList = document.querySelector('#todoList');
 const inputField = document.querySelector('#inputField');
@@ -22,6 +23,17 @@ function displayToDoList() {
       todoList.appendChild(li);
     });
   }
+
+  const editButtons = document.querySelectorAll('.description')
+  editButtons.forEach(btn => {
+    btn.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+      editTodo(e);
+      todoList.innerHTML = ''
+      displayToDoList()
+    }
+    })
+  })
 
   const checkboxesButtons = document.querySelectorAll('#defaultCheck1');
   checkboxesButtons.forEach((btn) => {
