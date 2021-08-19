@@ -1,12 +1,10 @@
-.content {
-  display: flex;
-  justify-content: space-between;
-}
+
 
 .description {
   padding-left: 10px;
 }
 
-.delete {
-  align-items: flex-end;
+.checked {
+  text-decoration: line-through;
+  color: gray;
 }
