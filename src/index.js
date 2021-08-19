@@ -8,7 +8,7 @@ import clearTodo from './clearChecked';
 
 const todoList = document.querySelector('#todoList');
 const inputField = document.querySelector('#inputField');
-const clearAll = document.querySelector('#clearAll')
+const clearAll = document.querySelector('#clearAll');
 
 const todos = [];
 
@@ -28,25 +28,25 @@ function displayToDoList() {
     });
   }
 
-  const editButtons = document.querySelectorAll('.description')
-  editButtons.forEach(btn => {
+  const editButtons = document.querySelectorAll('.description');
+  editButtons.forEach((btn) => {
     btn.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') {
-      editTodo(e);
-      todoList.innerHTML = ''
-      displayToDoList()
-    }
-    })
-  })
+      if (e.key === 'Enter') {
+        editTodo(e);
+        todoList.innerHTML = '';
+        displayToDoList();
+      }
+    });
+  });
 
-  const deleteButtons = document.querySelectorAll('.delete')
-  deleteButtons.forEach(btn => {
+  const deleteButtons = document.querySelectorAll('.delete');
+  deleteButtons.forEach((btn) => {
     btn.addEventListener('click', (e) => {
-      deleteTodo(e)
-      todoList.innerHTML = ''
-        displayToDoList()
-    })
-  })
+      deleteTodo(e);
+      todoList.innerHTML = '';
+      displayToDoList();
+    });
+  });
 
   const checkboxesButtons = document.querySelectorAll('#defaultCheck1');
   checkboxesButtons.forEach((btn) => {
@@ -70,4 +70,4 @@ clearAll.addEventListener('click', () => {
   clearTodo();
   todoList.innerHTML = '';
   displayToDoList();
-})
+});
