@@ -1,28 +1,15 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './style.css';
-
+import completeTask from './checkbox'
+import addTask from './addtodo'
 const todoList = document.querySelector('#todoList');
 
-const todos = [
-  {
-    description: 'Go to the cinema',
-    index: 1,
-    completed: 0,
-  },
-  {
-    description: 'wash my hair',
-    index: 2,
-    completed: 0,
-  },
-  {
-    description: 'sleep',
-    index: 3,
-    completed: 0,
-  },
-];
+const todos = [];
 
 function displayToDoList() {
-  todos.forEach((todo) => {
+  let data = localStorage.getItem('todos') 
+  if (data) {
+    JSON.parse(data).forEach(todo => {
     const li = document.createElement('li');
     li.classList.add('list-group-item');
     const text = `<div class="d-flex" id="${todo.index}">
@@ -33,19 +20,22 @@ function displayToDoList() {
     li.innerHTML = text;
     todoList.appendChild(li);
   });
+}
+
   const checkboxesButtons = document.querySelectorAll('#defaultCheck1');
   checkboxesButtons.forEach((btn) => {
     btn.addEventListener('change', (e) => {
-      const todoObject = todos.find((x) => x.index === e.target.parentNode.id);
-      const index = todos.indexOf(todoObject);
-      if (!todos[index].completed) {
-        todos[index].completed = 1;
-        e.target.parentNode.children[1].classList.add('checked');
-      } else {
-        todos[index].completed = 0;
-        e.target.parentNode.children[1].classList.remove('checked');
-      }
+      completeTask(e)
     });
   });
 }
 displayToDoList();
+
+inputField.addEventListener('keypress', (e) => {
+  if (e.key === 'Enter' && inputField.value ) {
+    addTask(todos)
+  todoList.innerHTML = ''
+  displayToDoList()
+  inputField.value = ''
+  }
+})
